@@ -22,6 +22,9 @@ Just a chemical engineering student who is intrested field of computer science. 
     3. **Show explored cells delay time** - A setting that user can change the value of, affecting the animation speed of the explored cells appearing.
     4. **Show actual path delay time** - A setting that user can change the value of, affecting the animation speed of the actual path appearing.
 
+## Preview
+<kbd>![VBA application's landing worksheet](media/landing_worksheet.png?raw=true)</kbd>
+<kbd>![VBA application's sandbox worksheet](media/sandbox_worksheet.png?raw=true)</kbd>
 
 ## Credits
 1. Breath First Search, Depth First Search and A* Search algorithms used are in Python code translated to VBA and modified from: https://www.linkedin.com/learning/python-data-structures-and-algorithms/python-data-structures-and-algorithms-in-action?u=76881922
