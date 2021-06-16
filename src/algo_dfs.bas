@@ -6,7 +6,7 @@ Option Explicit
 '   1. A Dictionary data structure containing all the cells explored and its parent cell.
 '   2. A Collection data structure containing all the visited_cells.
 Public Function dfs(start_cell As String, target_cell As String) As Variant
-    
+
     ' Main data structures for dfs.
     Dim stack As Object
     Dim predecessors As Object
@@ -48,9 +48,6 @@ Public Function dfs(start_cell As String, target_cell As String) As Variant
 End Function
 
 Public Sub run_dfs()
-'Dim start_time As Long ' For benchmarking purposes
-'start_time = Timer() ' For benchmarking purposes
-
     Dim start_cell As String
     Dim end_cell As String
     Dim visited_cells As Collection
@@ -76,10 +73,7 @@ Public Sub run_dfs()
         MsgBox "No valid path found!"
     End If
     
-'Debug.Print (Timer() - start_time) ' For benchmarking purposes
-    
     Exit Sub
 no_cell_found:
     MsgBox "Start point or end point is missing!"
-    
 End Sub

@@ -45,13 +45,9 @@ Public Function bfs(start_cell As String, target_cell As String) As Variant
     Loop
     
     bfs = Array(visited_cells, predecessors)
-    
 End Function
 
 Public Sub run_bfs()
-'Dim start_time As Long ' For benchmarking purposes
-'start_time = Timer() ' For benchmarking purposes
-
     Dim start_cell As String
     Dim end_cell As String
     Dim visited_cells As Collection
@@ -77,10 +73,7 @@ Public Sub run_bfs()
         MsgBox "No valid path found!"
     End If
     
-'Debug.Print (Timer() - start_time) ' For benchmarking purposes
-    
     Exit Sub
 no_cell_found:
     MsgBox "Start point or end point is missing!"
-    
 End Sub

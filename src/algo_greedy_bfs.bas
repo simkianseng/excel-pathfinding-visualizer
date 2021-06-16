@@ -3,7 +3,6 @@ Option Explicit
 
 
 Public Function greedy_bfs(start_cell As String, target_cell As String) As Variant
-    
     ' Main data structures for greedy_bfs.
     Dim priority_queue As clsPriorityQueue
     Dim visited_cells As Collection
@@ -52,7 +51,6 @@ Public Function greedy_bfs(start_cell As String, target_cell As String) As Varia
     Loop
     
     greedy_bfs = Array(visited_cells, predecessors)
-    
 End Function
 
 Function calculate_heuristic(current_cell As String, target_cell As String) As Long
@@ -67,7 +65,6 @@ Function calculate_heuristic(current_cell As String, target_cell As String) As L
     h_cost = Abs(current_cell_arr(0) - target_cell_arr(0)) + Abs(current_cell_arr(1) - target_cell_arr(1))
     
     calculate_heuristic = h_cost
-    
 End Function
 
 Public Sub run_greedy_bfs()
@@ -92,15 +89,7 @@ Public Sub run_greedy_bfs()
         Call show_path(predecessors, start_cell, end_cell, tools_form.mp1.Pages("p_advance").f_path.tb_actual_delay.Value)
     End If
     
-'    If predecessors(end_cell) = Empty Then
-'        MsgBox "No valid path found!"
-'    End If
-    
     Exit Sub
 no_cell_found:
     MsgBox "Start point or end point is missing!"
-      
-'      Call show_visited_cells(visited_cells, 0)
-'      Call show_path(predecessors, start_cell, end_cell, 0)
-'
 End Sub

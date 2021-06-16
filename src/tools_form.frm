@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} tools_form 
    Caption         =   "Tools"
-   ClientHeight    =   7080
+   ClientHeight    =   7296
    ClientLeft      =   108
    ClientTop       =   456
    ClientWidth     =   3876
@@ -15,15 +15,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-
-Private Sub btn_generate_maze_Click()
-    If tb_maze_row.Value < 2 Or tb_maze_col.Value < 2 Then
-        MsgBox "Please generate a maze that is 2 by 2 or greater!", vbCritical
-        Exit Sub
-    End If
-    
-    Call generateMaze(tb_cell_reference.Value, tb_maze_row.Value, tb_maze_col.Value)
-End Sub
 
 Private Sub tgl_eraser_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal Y As Single)
     tgl_obstacles.Value = False
@@ -49,6 +40,15 @@ Private Sub tgl_target_MouseDown(ByVal Button As Integer, ByVal Shift As Integer
     tgl_start.Value = False
 End Sub
 
+Private Sub btn_generate_maze_Click()
+    If tb_maze_row.Value < 2 Or tb_maze_col.Value < 2 Then
+        MsgBox "Please generate a maze that is 2 by 2 or greater!", vbCritical
+        Exit Sub
+    End If
+    
+    Call generateMaze(tb_cell_reference.Value, tb_maze_row.Value, tb_maze_col.Value, tb_obstacle_density.Value / 100)
+End Sub
+
 Private Sub btn_clear_Click()
     Call deact_btn
     Call clear_path
@@ -71,10 +71,7 @@ End Sub
 
 Private Sub UserForm_Activate()
     Me.StartUpPosition = 0
-    'Upper left
     Dim Top As Double, Left As Double
-'    Top = Abs(Application.Top) + (Application.Height - ActiveWindow.Height) + (Application.UsableHeight - ActiveWindow.UsableHeight)
-'    Left = Abs(Application.Left) + ActiveWindow.Width - ActiveWindow.UsableWidth
     Me.Top = ActiveSheet.Range("A8").Top
     Me.Left = ActiveWindow.Left
 End Sub
@@ -91,6 +88,7 @@ Private Sub UserForm_Initialize()
         .mp1.Pages("p_basic").f_maze_generator.tb_cell_reference.Value = Sheet3.Range("B6").Value
         .mp1.Pages("p_basic").f_maze_generator.tb_maze_row.Value = Sheet3.Range("B7").Value
         .mp1.Pages("p_basic").f_maze_generator.tb_maze_col.Value = Sheet3.Range("B8").Value
+        .mp1.Pages("p_basic").f_maze_generator.tb_obstacle_density.Value = Sheet3.Range("B9").Value
         
         algo_type = Sheet3.Range("B5").Value
         If algo_type = "bfs" Then
@@ -115,6 +113,7 @@ Private Sub UserForm_Terminate()
         Sheet3.Range("B6").Value = .mp1.Pages("p_basic").f_maze_generator.tb_cell_reference.Value
         Sheet3.Range("B7").Value = .mp1.Pages("p_basic").f_maze_generator.tb_maze_row.Value
         Sheet3.Range("B8").Value = .mp1.Pages("p_basic").f_maze_generator.tb_maze_col.Value
+        Sheet3.Range("B9").Value = .mp1.Pages("p_basic").f_maze_generator.tb_obstacle_density.Value
         
         If .mp1.Pages("p_basic").f_algo.ob_bfs.Value = True Then
             Sheet3.Range("B5").Value = "bfs"

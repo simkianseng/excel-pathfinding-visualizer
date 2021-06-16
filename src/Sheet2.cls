@@ -12,12 +12,11 @@ Option Explicit
 
 Private Sub btn_show_tools_Click()
     tools_form.Show vbModeless
+    Range(Cells(ActiveWindow.ScrollRow, ActiveWindow.ScrollColumn).Address).Select
 End Sub
 
 Private Sub Worksheet_SelectionChange(ByVal Target As Range)
-
     Application.EnableEvents = False
-    
     With tools_form
         If .tgl_eraser.Value Then
             Target.Value = Empty
@@ -42,11 +41,8 @@ Private Sub Worksheet_SelectionChange(ByVal Target As Range)
         End If
     End With
     
-'    Cells(ActiveWindow.ScrollRow, ActiveWindow.ScrollColumn).Address
     Range(Cells(ActiveWindow.ScrollRow, ActiveWindow.ScrollColumn).Address).Select
-    
     Application.EnableEvents = True
-    
 End Sub
 
 Sub disable_setup()
@@ -58,4 +54,3 @@ End Sub
 Sub setup()
     Application.EnableEvents = True
 End Sub
-
